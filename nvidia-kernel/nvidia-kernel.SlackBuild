@@ -3,6 +3,7 @@
 # Slackware build script for nvidia-kernel
 
 # Copyright 2007-2011 Heinz Wiesinger, Amsterdam, The Netherlands
+# Copyright 2014      Nick Blizzard <nickblizzard1776@gmail.com>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,19 +24,13 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Thanks to Robby Workman for suggestions to improve this script.
-#
-# ChangeLog
-# ------------------------------------------------------------------------------
-# 1.0	20-MAR-2011	New Maintainer: Edward W. Koenig <kingbeowulf@gmail.com>
-# 1.1	10-APR-2011	updated to new version, testing 13.37rc4.6692
-# 1.2   27-MAY-2011	new version, blacklist nouveau, fix ups, tested 13.37-stable
-# 1.5   01-JULY-2011	new version, kill SRCSUFFIX nonsense, use blacklist in /extra
-# 1.6   30-AUG-2011     version bump, typo clean ups
-# 1.6   29-JUN-2013     version bump
-#
 
 PRGNAM=nvidia-kernel
+<<<<<<< HEAD
 VERSION=${VERSION:-331.17}
+=======
+VERSION=${VERSION:-$(echo NVIDIA-Linux-*.run* | rev | cut -f 2- -d . | cut -f 1 -d - | rev)}
+>>>>>>> 00248c328f4b295fa28be7971b6fd5a21c7b9d52
 BUILD=${BUILD:-1}
 TAG=${TAG:-_bbsb}
 
@@ -46,13 +41,13 @@ PKGVER=${VERSION}_$(echo $KERNEL | tr - _)
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
-    i?86) ARCH=i486 ;;
+    i?86) ARCH=i586 ;;
     arm*) ARCH=arm ;;
        *) ARCH=$( uname -m ) ;;
   esac
 fi
 
-if [ "$ARCH" = "i486" ]; then
+if [ "$ARCH" = "i586" ]; then
   TARGET="x86"
   SRCSUFFIX=""
 elif [ "$ARCH" = "i686" ]; then
@@ -82,12 +77,15 @@ chmod -R u+w,go+r-w,a-s .
 
 patch -p1 < $CWD/patches/fix-num-physpages.patch
 
+<<<<<<< HEAD
 cd kernel || exit 1
 
+=======
+>>>>>>> 00248c328f4b295fa28be7971b6fd5a21c7b9d52
 make SYSSRC=$KERNELPATH module || exit 1
 
 mkdir -p $PKG/lib/modules/$KERNEL/kernel/drivers/video
-install -m 0664 nvidia.ko $PKG/lib/modules/$KERNEL/kernel/drivers/video/
+install -m 0664 *.ko $PKG/lib/modules/$KERNEL/kernel/drivers/video/
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$PKGVER
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$PKGVER/$PRGNAM.SlackBuild
@@ -97,4 +95,4 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 sed "s%@KERNEL@%$KERNEL%" $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$PKGVER-$TARGET-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$PKGVER-$TARGET-$BUILD$TAG.${PKGTYPE:-txz}

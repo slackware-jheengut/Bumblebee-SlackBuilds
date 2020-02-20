@@ -1,0 +1,45 @@
+Sat Jan 13 22:52:12 UTC 2018
+nvidia-bumblebee: upgraded.
+nvidia-kernel: upgraded.
+libbsd: upgraded
+
++--------------------------+
+Sat Mar 25 22:58:12 UTC 2017
+nvidia-bumblebee: upgraded.
+nvidia-kernel: upgraded.
+
++--------------------------+
+Fri Aug 9 15:21:32 UTC 2013
+libbsd: upgraded
+SLACKBUILDS.TXT: removed
+
++--------------------------+
+Wed Aug 7 00:36:48 UTC 2013
+All Slackbuild scripts now auto version set. This should help future updates.
+libvdpau: upgraded
+prmus: upgraded
+
++--------------------------+
+Tue Aug 06 12:49:16 UTC 2013
+nvidia drivers updated to support 3.10 kernel series
+nvidia-bumblebee: upgraded
+nvidia-kernel: upgraded
+
++--------------------------+
+Tue Jul 02 16:55:45 UTC 2013
+Progress by deletion.  Primus has effectively replaced VirtualGL
+and is a great improvement in speed and stability when used with
+bumblebee. Also, the mesa package in -current now has the library
+required for primus.
+libjpeg-turbo: removed.
+mesa: removed.
+VirtualGL: removed.
+
++--------------------------+
+Fri Jun 28 13:30:15 UTC 2013
+The Nvidia drivers are now upgraded to the latest 319.32 release.
+README: updated.
+SLACKBUILDS.TXT: updated.
+nvidia-bumblebee: upgraded.
+nvidia-kernel: upgraded.
+
